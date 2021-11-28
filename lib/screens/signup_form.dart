@@ -15,6 +15,7 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
+  var _value = 1;
   final _formKey = GlobalKey<FormState>();
 
   final _conUserName = TextEditingController();
@@ -63,15 +64,6 @@ class _SignupFormState extends State<SignupForm> {
 
   @override
   Widget build(BuildContext context) {
-    //Properties Of Dropdown
-    // double _numberFrom = 0;
-    // String _startMeasure = '';
-    // final List<String> _measures = [
-    //   'Male',
-    //   'Female',
-    //   'Others',
-    // ];
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -109,44 +101,54 @@ class _SignupFormState extends State<SignupForm> {
                   myicon: Icons.phone,
                 ),
                 const SizedBox(height: 10.0),
-                //Dropdown
-                // Column(
-                //   children: [
-                //     DropdownButton<String>(
-                //       elevation: 16,
-                //       hint: Text("Gender"),
-                //       items: _measures.map((String value) {
-                //         return DropdownMenuItem<String>(
-                //           value: value,
-                //           child: Text(value),
-                //         );
-                //       }).toList(),
-                //       onChanged: (String? value) {
-                //         setState(() {
-                //           _startMeasure = value!;
-                //         });
-                //       },
-                //     ),
-                //     TextField(
-                //       onChanged: (text) {
-                //         var rv = double.tryParse(text);
-                //         if (rv != null) {
-                //           setState(() {
-                //             _numberFrom = rv;
-                //           });
-                //         } else {
-                //           setState(() {
-                //             _numberFrom = 0;
-                //           });
-                //         }
-                //       },
-                //     ),
-                //   ],
-                // ),
-
-                //
-                // //Text((_numberFrom == null) ? '' : _numberFrom.toString()),
-                // Text("Number entered: $_numberFrom"), ??//
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'Gender',
+                        style: TextStyle(fontSize: 17.0),
+                      ),
+                      Radio(
+                          value: 1,
+                          groupValue: _value,
+                          onChanged: (value) {
+                            setState(() {
+                              _value = value as int;
+                            });
+                          }),
+                      const Text(
+                        'Male',
+                        style: TextStyle(fontSize: 17.0),
+                      ),
+                      Radio(
+                          value: 2,
+                          groupValue: _value,
+                          onChanged: (value) {
+                            setState(() {
+                              _value = value as int;
+                            });
+                          }),
+                      const Text(
+                        'Female',
+                        style: TextStyle(fontSize: 17.0),
+                      ),
+                      Radio(
+                          value: 3,
+                          groupValue: _value,
+                          onChanged: (value) {
+                            setState(() {
+                              _value = value as int;
+                            });
+                          }),
+                      const Text(
+                        'Others',
+                        style: TextStyle(fontSize: 17.0),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10.0),
                 MyTextFormField(
                   controller: _conAddress,
                   myhint: 'Address',

@@ -20,6 +20,7 @@ class MyTextFormField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextFormField(
+        style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.normal),
         controller: controller,
         obscureText: isObscureText,
         keyboardType: inputType,
