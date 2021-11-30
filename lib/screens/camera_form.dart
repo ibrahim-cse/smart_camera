@@ -1,34 +1,47 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:login_with_signup/screens/editor.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: 'Camera',
-    home: Camera(),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     title: 'Camera',
+//     home: MyCamera(),
+//   ));
+// }
 
-class Camera extends StatefulWidget {
+class MyCamera extends StatefulWidget {
   @override
-  _CameraState createState() => _CameraState();
+  _MyCameraState createState() => _MyCameraState();
 }
 
-class _CameraState extends State<Camera> {
+class _MyCameraState extends State<MyCamera> {
+  String dirPath = '';
   File? imageFile;
+
+  _initialImageView() {
+    if (imageFile == null) {
+      return Text('Select Image');
+    } else {
+      return Card(child: Image.file(imageFile!, width: 400.0, height: 400));
+    }
+  }
 
   _openGallery(BuildContext context) async {
     var picture = await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
+      // imageFile = picture as File?;
       imageFile = File(picture!.path);
+      dirPath = picture.path;
+      print('path');
+      print(dirPath);
     });
   }
 
   _openCamera(BuildContext context) async {
     var picture = await ImagePicker().pickImage(source: ImageSource.camera);
     setState(() {
-      // imageFile = picture as File;
-      imageFile = File(picture!.path);
+      imageFile = picture as File;
     });
   }
 
@@ -63,15 +76,6 @@ class _CameraState extends State<Camera> {
         });
   }
 
-  Widget _initialImageView() {
-    if (imageFile == null) {
-      return Text('Select Image');
-    } else {
-      return Card(child: Image.file(imageFile!, width: 400.0, height: 400));
-    }
-    // return Card(child: Image.file(imageFile!));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,14 +86,28 @@ class _CameraState extends State<Camera> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Text('No image selected'),
             _initialImageView(),
-
-            RaisedButton(
-              onPressed: () {
-                _showChoiceDialog(context);
-              },
-              child: Text('Select Image'),
+            Column(
+              children: [
+                RaisedButton(
+                  onPressed: () {
+                    _showChoiceDialog(context);
+                  },
+                  child: Text('Select Image'),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MyImagePainter(
+                                filePath: dirPath,
+                              )),
+                    );
+                  },
+                  child: Text('Image Editor'),
+                ),
+              ],
             ),
           ],
         ),

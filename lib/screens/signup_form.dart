@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/common/gen_login_signup_header.dart';
+import 'package:login_with_signup/common/take_signup_photo.dart';
 import 'package:login_with_signup/common/toast_helper.dart';
 import 'package:login_with_signup/database_handler/db_helper.dart';
 import 'package:login_with_signup/model/user_model.dart';
 import 'login_form.dart';
 import 'package:login_with_signup/common/get_text_form_field.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class SignupForm extends StatefulWidget {
   @override
@@ -67,7 +69,21 @@ class _SignupFormState extends State<SignupForm> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Sign Up'),
+        title: Row(
+          children: [
+            Image.asset(
+              'images/spectrum.jpg',
+              height: 57,
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              'Spectrum Bank',
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -77,9 +93,10 @@ class _SignupFormState extends State<SignupForm> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GenLoginSignupHeader(
-                  headerName: 'Sign Up',
-                ),
+                SignupPhoto(),
+                // GenLoginSignupHeader(
+                //   headerName: 'Sign Up',
+                // ),
                 MyTextFormField(
                   controller: _conUserName,
                   inputType: TextInputType.name,

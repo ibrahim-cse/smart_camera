@@ -33,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
     String uPassword = _conPassword.text;
 
     if (uEmail.isEmpty) {
-      MyAlertDialog(context, "Please Enter User ID");
+      MyAlertDialog(context, "Please Enter Mail");
     } else if (uPassword.isEmpty) {
       MyAlertDialog(context, "Please Enter Password");
     } else {
@@ -41,7 +41,7 @@ class _LoginFormState extends State<LoginForm> {
         if (userData != null) {
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (_) => Camera()),
+              MaterialPageRoute(builder: (_) => MyCamera()),
               (Route<dynamic> route) => false);
         } else {
           MyAlertDialog(context, "Error: User Not Found");
@@ -58,7 +58,21 @@ class _LoginFormState extends State<LoginForm> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Login'),
+        title: Row(
+          children: [
+            Image.asset(
+              'images/spectrum.jpg',
+              height: 57,
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              'Spectrum Bank',
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
