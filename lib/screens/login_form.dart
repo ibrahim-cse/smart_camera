@@ -39,10 +39,24 @@ class _LoginFormState extends State<LoginForm> {
     } else {
       await dbHelper.getLoginUser(uEmail, uPassword).then((userData) {
         if (userData != null) {
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (_) => MyCamera()),
-              (Route<dynamic> route) => false);
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return Center(child: CircularProgressIndicator());
+            },
+          );
+          new Future.delayed(new Duration(seconds: 3), () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => MyCamera()),
+                (Route<dynamic> route) => false);
+          });
+
+          // Navigator.pushAndRemoveUntil(
+          //     context,
+          //     MaterialPageRoute(builder: (_) => MyCamera()),
+          //     (Route<dynamic> route) => false);
         } else {
           MyAlertDialog(context, "Error: User Not Found");
         }
