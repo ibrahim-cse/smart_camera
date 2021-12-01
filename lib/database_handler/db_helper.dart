@@ -6,11 +6,10 @@ import 'dart:io' as io;
 
 class DbHelper {
   static Database? _db;
-  // static Database? _database = null;
 
   static const String dbName = 'info.db';
   static const String tableUser = 'user';
-  static const int Version = 1;
+  static const int version = 1;
 
   static const String cUserName = 'userName';
   static const String cEmail = 'email';
@@ -29,7 +28,7 @@ class DbHelper {
   initDb() async {
     io.Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, dbName);
-    var db = await openDatabase(path, version: Version, onCreate: _onCreate);
+    var db = await openDatabase(path, version: version, onCreate: _onCreate);
     return db;
   }
 

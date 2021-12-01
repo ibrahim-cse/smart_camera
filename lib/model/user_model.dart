@@ -1,5 +1,3 @@
-import '';
-
 class UserModel {
   UserModel(this.userName, this.email, this.phone, this.address, this.password);
 

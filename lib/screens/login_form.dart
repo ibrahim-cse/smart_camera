@@ -33,7 +33,7 @@ class _LoginFormState extends State<LoginForm> {
     String uPassword = _conPassword.text;
 
     if (uEmail.isEmpty) {
-      MyAlertDialog(context, "Please Enter Mail");
+      MyAlertDialog(context, "Please Enter Mail Address");
     } else if (uPassword.isEmpty) {
       MyAlertDialog(context, "Please Enter Password");
     } else {
@@ -52,17 +52,12 @@ class _LoginFormState extends State<LoginForm> {
                 MaterialPageRoute(builder: (_) => MyCamera()),
                 (Route<dynamic> route) => false);
           });
-
-          // Navigator.pushAndRemoveUntil(
-          //     context,
-          //     MaterialPageRoute(builder: (_) => MyCamera()),
-          //     (Route<dynamic> route) => false);
         } else {
-          MyAlertDialog(context, "Error: User Not Found");
+          MyAlertDialog(context, "Error: User Not Found!");
         }
       }).catchError((error) {
         print(error);
-        MyAlertDialog(context, "Error: Login Fail");
+        MyAlertDialog(context, "Error: Login Failed!");
       });
     }
   }

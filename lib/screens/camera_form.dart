@@ -3,13 +3,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/screens/editor.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//     title: 'Camera',
-//     home: MyCamera(),
-//   ));
-// }
-
 class MyCamera extends StatefulWidget {
   @override
   _MyCameraState createState() => _MyCameraState();
@@ -21,7 +14,7 @@ class _MyCameraState extends State<MyCamera> {
 
   _initialImageView() {
     if (imageFile == null) {
-      return Text('Select Image');
+      return Text('No Image Selected...');
     } else {
       return Card(child: Image.file(imageFile!, width: 400.0, height: 400));
     }
@@ -30,7 +23,6 @@ class _MyCameraState extends State<MyCamera> {
   _openGallery(BuildContext context) async {
     var picture = await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
-      // imageFile = picture as File?;
       imageFile = File(picture!.path);
       dirPath = picture.path;
       print('path');
@@ -80,7 +72,7 @@ class _MyCameraState extends State<MyCamera> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Load Image'),
+        title: Text('View Image'),
       ),
       body: Center(
         child: Column(
@@ -89,23 +81,49 @@ class _MyCameraState extends State<MyCamera> {
             _initialImageView(),
             Column(
               children: [
-                RaisedButton(
-                  onPressed: () {
-                    _showChoiceDialog(context);
-                  },
-                  child: Text('Select Image'),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                  width: double.infinity,
+                  child: FlatButton(
+                    child: const Text(
+                      'Select Image',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      _showChoiceDialog(context);
+                    },
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
                 ),
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
+                SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                  width: double.infinity,
+                  child: FlatButton(
+                    child: const Text(
+                      'Image Editor',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
                           builder: (context) => MyImagePainter(
-                                filePath: dirPath,
-                              )),
-                    );
-                  },
-                  child: Text('Image Editor'),
+                            filePath: dirPath,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
                 ),
               ],
             ),

@@ -13,7 +13,7 @@ class _SignupPhotoState extends State<SignupPhoto> {
   Widget _firstImageView() {
     if (sImageFile == null) {
       return Image.asset(
-        'images/logo2png.png',
+        'images/logo2.png',
         height: 200.0,
         width: 200.0,
       );

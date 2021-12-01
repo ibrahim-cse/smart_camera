@@ -1,15 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:login_with_signup/common/gen_login_signup_header.dart';
 import 'package:login_with_signup/common/take_signup_photo.dart';
 import 'package:login_with_signup/common/toast_helper.dart';
 import 'package:login_with_signup/database_handler/db_helper.dart';
 import 'package:login_with_signup/model/user_model.dart';
 import 'login_form.dart';
 import 'package:login_with_signup/common/get_text_form_field.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class SignupForm extends StatefulWidget {
   @override
