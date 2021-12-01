@@ -91,9 +91,6 @@ class _SignupFormState extends State<SignupForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SignupPhoto(),
-                // GenLoginSignupHeader(
-                //   headerName: 'Sign Up',
-                // ),
                 MyTextFormField(
                   controller: _conUserName,
                   inputType: TextInputType.name,

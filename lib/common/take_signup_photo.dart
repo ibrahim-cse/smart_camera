@@ -12,18 +12,23 @@ class _SignupPhotoState extends State<SignupPhoto> {
 
   Widget _firstImageView() {
     if (sImageFile == null) {
-      return Image.asset(
-        'images/logo2.png',
-        height: 200.0,
-        width: 200.0,
+      return CircleAvatar(
+        child: Image.asset(
+          'images/logo2.png',
+        ),
+        radius: 80.0,
+        backgroundColor: Colors.transparent,
       );
     } else {
       return Card(
+        child: CircleAvatar(
           child: Image.file(
-        sImageFile!,
-        height: 100.0,
-        width: 150.0,
-      ));
+            sImageFile!,
+          ),
+          radius: 80,
+          backgroundColor: Colors.white,
+        ),
+      );
     }
   }
 
@@ -37,7 +42,6 @@ class _SignupPhotoState extends State<SignupPhoto> {
   _openSCamera(BuildContext context) async {
     var picture = await ImagePicker().pickImage(source: ImageSource.camera);
     setState(() {
-      // imageFile = picture as File;
       sImageFile = File(picture!.path);
     });
   }
@@ -102,7 +106,7 @@ class _SignupPhotoState extends State<SignupPhoto> {
                   },
                   child: Icon(Icons.camera_alt),
                 ),
-                bottom: 20.0,
+                top: 10.0,
                 right: 10.0,
               ),
             ],
