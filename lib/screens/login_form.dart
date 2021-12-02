@@ -69,10 +69,22 @@ class _LoginFormState extends State<LoginForm> {
         centerTitle: true,
         title: Row(
           children: [
-            Image.asset(
-              'images/spectrum.jpg',
+            Container(
+              width: 57,
               height: 57,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: AssetImage(
+                      'images/spectrum.jpg',
+                    ),
+                    fit: BoxFit.fill),
+              ),
             ),
+            // Image.asset(
+            //   'images/spectrum.jpg',
+            //   height: 57,
+            // ),
             SizedBox(
               width: 10.0,
             ),

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/common/logout_promt.dart';
@@ -17,7 +18,10 @@ class _MyCameraState extends State<MyCamera> {
 
   _initialImageView() {
     if (imageFile == null) {
-      return Text('No Image Selected...');
+      return Text(
+        'No Image Selected...',
+        style: TextStyle(fontSize: 20.0),
+      );
     } else {
       return Card(child: Image.file(imageFile!, width: 400.0, height: 400));
     }
@@ -105,7 +109,7 @@ class _MyCameraState extends State<MyCamera> {
                   child: FlatButton(
                     child: const Text(
                       'Select Image',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
                     ),
                     onPressed: () {
                       _showChoiceDialog(context);
@@ -131,7 +135,7 @@ class _MyCameraState extends State<MyCamera> {
                     },
                     child: Text(
                       'Slideshow',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
                     ),
                   ),
                   decoration: BoxDecoration(
@@ -148,7 +152,7 @@ class _MyCameraState extends State<MyCamera> {
                   child: FlatButton(
                     child: const Text(
                       'Image Editor',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 16.0),
                     ),
                     onPressed: () {
                       Navigator.push(
