@@ -46,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
               return Center(child: CircularProgressIndicator());
             },
           );
-          new Future.delayed(new Duration(seconds: 3), () {
+          new Future.delayed(new Duration(seconds: 1), () {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (_) => MyCamera()),

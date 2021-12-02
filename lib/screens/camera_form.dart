@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:login_with_signup/common/logout_promt.dart';
 import 'package:login_with_signup/screens/editor.dart';
+import 'package:login_with_signup/screens/login_form.dart';
 import 'package:login_with_signup/screens/slideshow.dart';
 
 class MyCamera extends StatefulWidget {
@@ -78,6 +80,17 @@ class _MyCameraState extends State<MyCamera> {
     return Scaffold(
       appBar: AppBar(
         title: Text('View Image'),
+        actions: [
+          FlatButton(
+            onPressed: () {
+              logoutChoiceDialog(context);
+            },
+            child: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
       body: Center(
         child: Column(
