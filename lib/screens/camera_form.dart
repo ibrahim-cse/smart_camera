@@ -34,7 +34,11 @@ class _MyCameraState extends State<MyCamera> {
   _openCamera(BuildContext context) async {
     var picture = await ImagePicker().pickImage(source: ImageSource.camera);
     setState(() {
-      imageFile = picture as File;
+      // imageFile = picture as File;
+      imageFile = File(picture!.path);
+      dirPath = picture.path;
+      print('path');
+      print(dirPath);
     });
   }
 

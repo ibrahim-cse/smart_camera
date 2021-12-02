@@ -170,12 +170,14 @@ class _SignupFormState extends State<SignupForm> {
                   controller: _conPassword,
                   myhint: 'Password',
                   myicon: Icons.lock,
+                  isObscureText: true,
                 ),
                 const SizedBox(height: 10.0),
                 MyTextFormField(
                   controller: _conConfirmPassword,
                   myhint: 'Confirm password',
                   myicon: Icons.lock,
+                  isObscureText: true,
                 ),
                 Container(
                   margin: const EdgeInsets.all(30.0),
