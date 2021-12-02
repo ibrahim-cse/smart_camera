@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:login_with_signup/screens/editor.dart';
+import 'package:login_with_signup/screens/slideshow.dart';
 
 class MyCamera extends StatefulWidget {
   @override
@@ -83,7 +84,7 @@ class _MyCameraState extends State<MyCamera> {
               children: [
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 30.0),
-                  width: double.infinity,
+                  width: 250.0,
                   child: FlatButton(
                     child: const Text(
                       'Select Image',
@@ -99,11 +100,34 @@ class _MyCameraState extends State<MyCamera> {
                   ),
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: 15.0,
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 30.0),
+                  width: 250.0,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Slideshow()),
+                      );
+                    },
+                    child: Text(
+                      'Slideshow',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                SizedBox(
+                  height: 15.0,
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 30.0),
-                  width: double.infinity,
+                  width: 250.0,
                   child: FlatButton(
                     child: const Text(
                       'Image Editor',
