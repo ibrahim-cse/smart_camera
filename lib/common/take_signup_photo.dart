@@ -26,7 +26,7 @@ class _SignupPhotoState extends State<SignupPhoto> {
             sImageFile!,
           ),
           radius: 80,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
         ),
       );
     }
@@ -98,7 +98,10 @@ class _SignupPhotoState extends State<SignupPhoto> {
 
           Stack(
             children: [
-              _firstImageView(),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(200.0),
+                child: _firstImageView(),
+              ),
               Positioned(
                 child: InkWell(
                   onTap: () {
