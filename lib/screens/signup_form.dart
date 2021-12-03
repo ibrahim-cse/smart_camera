@@ -202,23 +202,26 @@ class _SignupFormState extends State<SignupForm> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Already have have an Account?',
-                    ),
-                    FlatButton(
-                      textColor: Colors.blue,
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (_) => LoginForm()),
-                            (Route<dynamic> route) => false);
-                      },
-                      child: Text('Login'),
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.only(bottom: 30.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Already have have an Account?',
+                      ),
+                      FlatButton(
+                        textColor: Colors.blue,
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (_) => LoginForm()),
+                              (Route<dynamic> route) => false);
+                        },
+                        child: Text('Login'),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -20,12 +20,12 @@ Future<void> logoutChoiceDialog(BuildContext context) {
                     style: TextStyle(color: Colors.red),
                   ),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginForm(),
-                      ),
-                    );
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginForm(),
+                        ),
+                        (Route<dynamic> route) => false);
                   },
                 ),
                 Padding(padding: EdgeInsets.all(16.0)),
